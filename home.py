@@ -1,11 +1,12 @@
 from tkinter import *
 from tkinter import messagebox
+from employee import employee
 import os
 
-root = Tk()
 
-width = root.winfo_screenwidth()
-height = root.winfo_screenheight()
+
+# width = root.winfo_screenwidth()
+# height = root.winfo_screenheight()
 font = "Bahnschrift"
 bg_color = "#90CCF4"
 fg_color = "#19181A"
@@ -13,7 +14,7 @@ fg_color = "#19181A"
 class SM:
     def __init__(self, root):
         self.root = root
-        self.root.geometry("%dx%d+0+0" % (width, height))
+        self.root.geometry("%dx%d+0+0" % (root.winfo_screenwidth(), root.winfo_screenheight()))
         self.root.title("Store Manager")
         # self.root.attributes('-fullscreen', True)
 
@@ -38,15 +39,22 @@ class SM:
         btn_supplier = Button(leftNav, text="Supplier", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_invoice = Button(leftNav, text="Invoice", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_analysis = Button(leftNav, text="Analysis", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
-        btn_employee = Button(leftNav, text="Employee", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
+        btn_employee = Button(leftNav, text="Employee", command=self.emp ,font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_customer = Button(leftNav, text="Customer", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
 
-shop = SM(root)
+    def emp(self):
+        self.new_win = Toplevel(self.root)
+        self.new_emp = employee(self.new_win)
 
-def Exit():
-    sure = messagebox.askyesno("Exit", "Are you sure you want to exit?", parent=root)
-    if sure == True:
-        root.destroy()
 
-root.protocol("WM_DELETE_WINDOW", Exit)
-root.mainloop()
+if __name__ == '__main__':
+    root = Tk()
+    shop = SM(root)
+
+    def Exit():
+        sure = messagebox.askyesno("Exit", "Are you sure you want to exit?", parent=root)
+        if sure == True:
+            root.destroy()
+
+    root.protocol("WM_DELETE_WINDOW", Exit)
+    root.mainloop()

@@ -35,6 +35,7 @@ class SM:
         leftNav.place(x = 2, y = 102, width = 220, height = 535)
 
         # lbl_menu = Label(leftNav, text="Inventory", font=(font, 18), bg = "#40e0d0", padx=5, pady=5).pack(side=TOP, fill=X)
+        btn_home = Button(leftNav, text="Home", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_product = Button(leftNav, text="Products", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_supplier = Button(leftNav, text="Supplier", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
         btn_invoice = Button(leftNav, text="Invoice", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
@@ -43,8 +44,9 @@ class SM:
         btn_customer = Button(leftNav, text="Customer", font=(font, 18), bg="#008080", bd=4, fg="white", cursor="hand2").pack(side=TOP, fill=X, pady=8, padx=5)
 
     def emp(self):
-        self.new_win = Toplevel(self.root)
-        self.new_emp = employee(self.new_win)
+        # self.new_win = Toplevel(self.root)
+        # self.new_emp = employee(self.new_win)
+        self.new_emp = employee(self.root)
 
 
 if __name__ == '__main__':
